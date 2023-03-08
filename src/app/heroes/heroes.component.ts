@@ -28,7 +28,11 @@ export class HeroesComponent {
     if (!name) { return; }
     this.heroService.addHero({ name } as Hero)
       .subscribe(hero => {
-        this.heroes.push(hero);
+        if (hero) 
+          this.heroes.push(hero);
+        else {
+          console.error('Falha ao adicionar herói: ', hero);
+        }
       });
   }
 
